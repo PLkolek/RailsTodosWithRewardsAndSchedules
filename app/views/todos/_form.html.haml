@@ -12,6 +12,7 @@
   .field
     = f.label :description
     = f.text_area :description
+  %h3 Reward
   = f.fields_for :reward do |fr|
     .field
       = fr.label :title
@@ -19,10 +20,11 @@
     .field
       = fr.label :description
       = fr.text_area :description
+  %h3 Schedule
   = f.fields_for :schedule do |fs|
     .field
       = fs.label :day_of_week
-      = fs.select(:day_of_week, Date::DAYNAMES.zip(Date::DAYNAMES))
+      = fs.select :day_of_week, Date::DAYNAMES.zip(Date::DAYNAMES)
     .field
       = fs.label :from
       = fs.time_select :from
