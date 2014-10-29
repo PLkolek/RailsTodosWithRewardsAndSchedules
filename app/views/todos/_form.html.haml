@@ -12,5 +12,12 @@
   .field
     = f.label :description
     = f.text_area :description
+  = f.fields_for :reward do |fr|
+    .field
+      = fr.label :title
+      = fr.text_field :title
+    .field
+      = fr.label :description
+      = fr.text_area :description
   .actions
     = f.submit 'Save'
