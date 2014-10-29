@@ -1,6 +1,6 @@
 class Todo < ActiveRecord::Base
-  has_one :reward
+  has_and_belongs_to_many :rewards
   has_one :schedule
-  accepts_nested_attributes_for :reward
+  accepts_nested_attributes_for :rewards
   accepts_nested_attributes_for :schedule
 end
