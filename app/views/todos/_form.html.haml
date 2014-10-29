@@ -19,5 +19,15 @@
     .field
       = fr.label :description
       = fr.text_area :description
+  = f.fields_for :schedule do |fs|
+    .field
+      = fs.label :day_of_week
+      = fs.text_field :day_of_week
+    .field
+      = fs.label :from
+      = fs.time_select :from
+    .field
+      = fs.label :to
+      = fs.time_select :to
   .actions
     = f.submit 'Save'

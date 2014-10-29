@@ -16,6 +16,7 @@ class TodosController < ApplicationController
   def new
     @todo = Todo.new
     @todo.build_reward
+    @todo.build_schedule
   end
 
   # GET /todos/1/edit
@@ -70,6 +71,10 @@ class TodosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def todo_params
-      params.require(:todo).permit(:title, :description, :reward_attributes => [:title, :description])
+      params.require(:todo).permit(:title,
+                                   :description,
+                                   :reward_attributes => [:title, :description],
+                                   :schedule_attributes => [:from, :to, :day_of_week]
+      )
     end
 end
