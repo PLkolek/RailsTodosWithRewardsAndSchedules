@@ -22,7 +22,7 @@
   = f.fields_for :schedule do |fs|
     .field
       = fs.label :day_of_week
-      = fs.text_field :day_of_week
+      = fs.select(:day_of_week, Date::DAYNAMES.zip(Date::DAYNAMES))
     .field
       = fs.label :from
       = fs.time_select :from
