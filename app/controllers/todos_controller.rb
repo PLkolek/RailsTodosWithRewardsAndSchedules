@@ -16,7 +16,6 @@ class TodosController < ApplicationController
   def new
     @todo = Todo.new
     @todo.build_schedule
-    @todo.rewards.build
   end
 
   # GET /todos/1/edit
@@ -74,7 +73,8 @@ class TodosController < ApplicationController
       params.require(:todo).permit(:title,
                                    :description,
                                    :rewards_attributes => [:title, :description],
-                                   :schedule_attributes => [:from, :to, :day_of_week]
+                                   :schedule_attributes => [:from, :to, :day_of_week],
+                                   :reward_ids => []
       )
     end
 end

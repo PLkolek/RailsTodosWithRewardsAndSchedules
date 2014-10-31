@@ -12,21 +12,15 @@
   .field
     = f.label :description
     = f.text_area :description
-  %h3 Reward
-  = f.fields_for :rewards do |fr|
-    .field
-      = fr.label :title
-      = fr.text_field :title
-    .field
-      = fr.label :description
-      = fr.text_area :description
+  %h3 Rewards
+  = f.collection_select :reward_ids, Reward.all, :id, :title, {}, {:multiple=>true}
   %h3 Schedule
   = f.fields_for :schedule do |fs|
     .field
       = fs.label :day_of_week
       = fs.select :day_of_week, Date::DAYNAMES.zip(Date::DAYNAMES)
     .field
-      = fs.label :from
+      = fs.label :from1
       = fs.time_select :from
     .field
       = fs.label :to

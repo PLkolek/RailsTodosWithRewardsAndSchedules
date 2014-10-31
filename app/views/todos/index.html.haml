@@ -1,21 +1,20 @@
 %h1 Listing todos
 
-%table
-  %tr
-    %th Title
-    %th Description
-    %th
-    %th
-    %th
+- @todos.each do |todo|
+  %h2= link_to todo.title, edit_todo_path(todo)
+  %p= todo.description
+  %i #{todo.schedule.day_of_week}, #{todo.schedule.from} - #{todo.schedule.to}
+  - if todo.rewards.any?
+    %h3 Rewards
+    %ul
+      - todo.rewards.each do |rew|
+        %li
+          %b #{rew.title}:
+          #{rew.description}
 
-  - @todos.each do |todo|
-    %tr
-      %td= todo.title
-      %td= todo.description
-      %td= link_to 'Show', todo
-      %td= link_to 'Edit', edit_todo_path(todo)
-      %td= link_to 'Destroy', todo, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+  =link_to 'Destroy', todo, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  %hr
 %br
 
 = link_to 'New Todo', new_todo_path
+= link_to 'New Reward', new_reward_path
